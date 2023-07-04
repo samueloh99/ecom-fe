@@ -1,11 +1,12 @@
 import NextLink from "next/link";
 import NextImage from "next/image";
-import { siteConfig } from "@/config/site";
 import { BsTelephoneFill, BsWhatsapp } from "react-icons/bs";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import UpLogo from "@/public/uplogo.webp";
-
 import { GrMail } from "react-icons/gr";
+
+import { siteConfig } from "@/config/site";
+
+import UpLogo from "@/public/uplogo.webp";
 
 export const Footer = () => {
   return (

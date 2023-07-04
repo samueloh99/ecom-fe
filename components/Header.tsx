@@ -1,8 +1,10 @@
-import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { BiSolidUser } from "react-icons/bi";
+
+import { siteConfig } from "@/config/site";
+
 import Logo from "@/public/logo.svg";
 
 export const Header = () => {
