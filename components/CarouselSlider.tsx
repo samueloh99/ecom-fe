@@ -6,25 +6,30 @@ import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import { GoDotFill, GoDot } from "react-icons/go";
 
 interface ImageSliderProps {
-  banners: {
+  products: {
     img: StaticImageData;
     alt: string;
   }[];
 }
 
-export const ImageSlider = ({ banners }: ImageSliderProps) => {
+export const CarouselSlider = ({ products }: ImageSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const chunkedProducts = [];
+  for (let i = 0; i < products.length; i += 4) {
+    chunkedProducts.push(products.slice(i, i + 4));
+  }
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide
-      ? banners.length - 1
+      ? chunkedProducts.length - 1
       : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
   const nextSlide = () => {
-    const isLastSlide = currentIndex === banners.length - 1;
+    const isLastSlide = currentIndex === chunkedProducts.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
@@ -32,10 +37,11 @@ export const ImageSlider = ({ banners }: ImageSliderProps) => {
   const goToSlide = (slideIndex: number) => {
     setCurrentIndex(slideIndex);
   };
+
   return (
-    <section className="flex flex-col relative container">
+    <section className="flex flex-col relative container my-[100px]">
       <div className="flex w-full h-full relative duration-[0.5s] flex-col">
-        {banners.map((banner, index) => (
+        {chunkedProducts.map((bannerGroup, index) => (
           <div
             key={index}
             className={`flex w-full h-full duration-[0.5s] transition-opacity ease-in-out ${
@@ -46,11 +52,35 @@ export const ImageSlider = ({ banners }: ImageSliderProps) => {
                 currentIndex === index ? "relative" : "absolute",
             }}
           >
-            <NextImage
-              draggable={false}
-              src={banner.img}
-              alt={banner.alt}
-            />
+            <div className="flex gap-5 justify-around w-full h-full">
+              {bannerGroup.map((banner, bannerIndex) => (
+                <div
+                  key={bannerIndex}
+                  onClick={() => console.log("AQUI", bannerIndex)}
+                  className="w-1/4 border border-[#ccc] flex flex-col cursor-pointer"
+                >
+                  <NextImage
+                    draggable={false}
+                    src={banner.img}
+                    alt={banner.alt}
+                    layout="responsive"
+                    objectFit="cover"
+                    width={500}
+                    height={500}
+                  />
+                  <div className="flex flex-col gap-3 py-5 items-center justify-center">
+                    <h4>Product 1</h4>
+                    <h4>R$400.00</h4>
+                    <div className="flex flex-row gap-2">
+                      <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-black" />
+                      <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-red-500" />
+                      <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-pink-500" />
+                      <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-purple-500" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -66,8 +96,8 @@ export const ImageSlider = ({ banners }: ImageSliderProps) => {
       >
         <AiOutlineRight size={40} color="white" />
       </div>
-      <div className="flex top-4 justify-center py-2">
-        {banners.map((_slide, slideIndex) => (
+      <div className="flex top-4 justify-center py-2 z-[10]">
+        {chunkedProducts.map((_slide, slideIndex) => (
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
