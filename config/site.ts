@@ -29,4 +29,47 @@ export const siteConfig = {
     instagram: "https://github.com/privacy-scaling-explorations",
     upwebsite: "https://www.upagencybrasil.com.br/",
   },
+  categories: [
+    {
+      id: 0,
+      name: "Vestidos",
+      slug: "/vestidos",
+    },
+    {
+      id: 1,
+      name: "Calças",
+      slug: "/calcas",
+    },
+    {
+      id: 2,
+      name: "Shorts",
+      slug: "/shorts",
+    },
+
+    {
+      id: 3,
+      name: "Macacão",
+      slug: "/macacao",
+    },
+    {
+      id: 4,
+      name: "Saias",
+      slug: "/saias",
+    },
+    {
+      id: 5,
+      name: "Cropped",
+      slug: "/cropped",
+    },
+    {
+      id: 6,
+      name: "Body",
+      slug: "/body",
+    },
+    {
+      id: 7,
+      name: "Kimono",
+      slug: "/kimono",
+    },
+  ],
 };

@@ -4,13 +4,14 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { BiSolidUser } from "react-icons/bi";
 
 import { siteConfig } from "@/config/site";
+import { CategoriesNav } from "./CategoriesNav";
 
 import Logo from "@/public/logo.svg";
 
 export const Header = () => {
   return (
-    <div className="flex border border-b-[#ccc] min-h-[100px] h-full">
-      <div className="flex container max-h-full justify-between items-center relative">
+    <div className="flex flex-col min-h-[150px] h-full">
+      <div className="flex flex-grow container max-h-full justify-between items-center relative">
         <div className="flex gap-5">
           <NextLink
             href={siteConfig.links.facebook}
@@ -37,6 +38,7 @@ export const Header = () => {
           <h6>Criar Conta</h6>
         </div>
       </div>
+      <CategoriesNav />
     </div>
   );
 };
