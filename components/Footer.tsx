@@ -10,10 +10,10 @@ import UpLogo from "@/public/uplogo.webp";
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col container min-h-[350px] justify-between h-full">
-      <div className="flex w-full justify-between">
-        <div className="flex gap-[100px]">
-          <div className="flex flex-col gap-4 min-h-full">
+    <footer className="flex flex-col border-t border-[#ccc] container min-h-[350px] justify-between h-full">
+      <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-between gap-10 md:gap-0 py-10">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-[100px] md:max-w-full max-w-[200px] w-full">
+          <div className="flex flex-col gap-4 min-h-full items-center md:items-start">
             <h5>Atendimento</h5>
             <div className="flex flex-col gap-2">
               {siteConfig.mainNavFooter.map((item, index) => {
@@ -30,7 +30,7 @@ export const Footer = () => {
               })}
             </div>
           </div>
-          <div className="flex flex-col gap-4 min-h-full">
+          <div className="flex flex-col gap-4 min-h-full items-center md:items-start">
             <h5>Ajuda e Suporte</h5>
             <NextLink
               href={"/politica-de-privacidade"}
@@ -41,7 +41,7 @@ export const Footer = () => {
             </NextLink>
           </div>
         </div>
-        <div className="flex flex-col gap-4 min-h-full">
+        <div className="flex flex-col gap-4 min-h-full max-w-[200px] w-full md:max-w-auto items-center md:items-start">
           <h5>Contato</h5>
           <h6>Entre em contato conosco</h6>
           <div className="flex items-center justify-start gap-2">
@@ -74,9 +74,9 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border border-[#ccc] w-full" />
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col text-[13px] font-light">
+      <div className="border-b border-[#ccc] w-full mb-10 md:mb-0" />
+      <div className="flex flex-col md:flex-row gap-3 md:gap-0 items-center justify-between">
+        <div className="flex flex-col text-[13px] font-light text-center md:text-start w-4/5 md:w-full">
           <p>
             Cotton Star Industrial Ltda / CNPJ: 05.951.356/0001-24
           </p>

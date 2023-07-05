@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 
 export const CategoriesNav = () => {
   return (
-    <div className="flex flex-wrap border border-[#ccc]">
+    <div className="hidden md:flex flex-wrap border-y border-[#ccc]">
       <div className="flex container justify-between">
         {siteConfig.categories.map((item, index) => {
           return (

@@ -249,7 +249,7 @@ export default function ProductPage() {
                 <p className="font-light text-[15px] text-gray-500">
                   ou
                 </p>
-                <div className="flex gap-1 w-2/5 justify-start">
+                <div className="flex gap-1 w-3/5 md:w-2/5 justify-start">
                   <p className="font-light text-[17px] text-gray-500">
                     FAÇA O{" "}
                   </p>
