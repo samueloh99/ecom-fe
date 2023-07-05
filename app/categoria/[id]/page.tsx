@@ -15,7 +15,7 @@ export default function CategoryPage() {
   const pathName = usePathname();
   const path = pathName.split("/").slice(1);
   return (
-    <main className="flex container flex-col w-full min-h-screen gap-10 flex-col items-center mb-20">
+    <main className="flex container flex-col w-full min-h-screen gap-10 flex-col items-center mb-20 px-3 md:px-0">
       <Breadcrumbs paths={path} />
       <section className="flex flex-col lg:flex-row gap-5 w-full">
         <section className="flex flex-col w-full lg:w-2/5 gap-5">
@@ -292,7 +292,7 @@ export default function CategoryPage() {
         </section>
         <section className="flex flex-col w-full gap-5">
           <h3 className="uppercase text-[20px] font-medium">
-            {path}
+            {path.slice(1)}
           </h3>
           <div className="flex justify-between items-center border-y py-5 border-[#ccc]">
             <div className="flex items-center justify-center gap-3">
