@@ -72,7 +72,7 @@ export default function ProductPage() {
             </div>
           </div>
           <div className="flex items-start justify-center gap-2 flex-col border-b py-5 border-black">
-            {/* <table className="w-full">
+            <table className="w-full">
               <thead>
                 <tr className="">
                   <th className="w-[50px]" />
@@ -218,8 +218,8 @@ export default function ProductPage() {
                   </td>
                 </tr>
               </tbody>
-            </table> */}
-            {/* <div className="flex w-full justify-between items-center py-5">
+            </table>
+            <div className="flex w-full justify-between items-center py-5">
               <p
                 className="text-[17px] underline cursor-pointer"
                 onClick={() => console.log("ESVAZIAR CARRINHO")}
@@ -236,8 +236,8 @@ export default function ProductPage() {
             <button className="flex w-full gap-2 bg-[#89DC74] text-[20px] items-center justify-center py-3 font-normal text-white">
               FINALIZAR PEDIDO
               <BsFillCartFill color="white" size={25} />
-            </button> */}
-            <div className="flex gap-4 pt-5 flex-col w-full">
+            </button>
+            {/* <div className="flex gap-4 pt-5 flex-col w-full">
               <p className="text-[15px] text-gray-500 underline">
                 Para vizualizar o Preço, por favor
               </p>
@@ -258,7 +258,7 @@ export default function ProductPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="flex gap-5 flex-col w-full pt-5">
             <h4 className="text-[17px]">Fretes e Devoluções</h4>

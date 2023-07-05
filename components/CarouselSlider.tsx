@@ -1,9 +1,15 @@
 import { StaticImageData } from "next/image";
 import NextImage from "next/image";
-import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
-import { GoDotFill, GoDot } from "react-icons/go";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+// import required modules
+import { Pagination, Navigation } from "swiper/modules";
 
 interface ImageSliderProps {
   products: {
@@ -13,34 +19,81 @@ interface ImageSliderProps {
 }
 
 export const CarouselSlider = ({ products }: ImageSliderProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const chunkedProducts = [];
-  for (let i = 0; i < products.length; i += 4) {
-    chunkedProducts.push(products.slice(i, i + 4));
-  }
-
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide
-      ? chunkedProducts.length - 1
-      : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === chunkedProducts.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToSlide = (slideIndex: number) => {
-    setCurrentIndex(slideIndex);
-  };
-
   return (
     <section className="flex flex-col relative container my-[100px]">
-      <div className="flex w-full h-full relative duration-[0.5s] flex-col">
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        loop={true}
+        navigation={true}
+        modules={[Navigation, Pagination]}
+        className="max-w-full min-h-[800px] md:min-h-[500px] lg:min-h-[600px] xl:min-h-[700px] 2xl:min-h-[800px] h-full border border-black py-[200px]"
+      >
+        {products.map((item, index) => {
+          return (
+            <SwiperSlide
+              key={index}
+              onClick={() => console.log("AQUI", index)}
+              className="w-1/4 max-h-[700px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px] 2xl:max-h-[700px] h-full border border-[#ccc] flex flex-col cursor-pointer items-center justify-center text-center"
+            >
+              <NextImage
+                draggable={false}
+                src={item.img}
+                alt={item.alt}
+                layout="responsive"
+                objectFit="cover"
+                width={500}
+                height={500}
+              />
+              <div className="flex flex-col gap-3 py-5 items-center justify-center">
+                <h4>Product 1</h4>
+                <h4>R$400.00</h4>
+                <div className="flex flex-row gap-2">
+                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-black" />
+                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-red-500" />
+                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-pink-500" />
+                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-purple-500" />
+                </div>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+      {/* <Carousel showArrows={true} infiniteLoop={true}>
+        {products.map((item, index) => {
+          return (
+            <div
+              key={index}
+              onClick={() => console.log("AQUI", index)}
+              className="w-1/4 border border-[#ccc] flex flex-col cursor-pointer"
+            >
+              <NextImage
+                draggable={false}
+                src={item.img}
+                alt={item.alt}
+                layout="responsive"
+                objectFit="cover"
+                width={500}
+                height={500}
+              />
+              <div className="flex flex-col gap-3 py-5 items-center justify-center">
+                <h4>Product 1</h4>
+                <h4>R$400.00</h4>
+                <div className="flex flex-row gap-2">
+                  <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-black" />
+                  <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-red-500" />
+                  <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-pink-500" />
+                  <div className="flex w-[25px] h-[25px] border border-black rounded-full bg-purple-500" />
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </Carousel> */}
+      {/* <div className="flex w-full h-full relative duration-[0.5s] flex-col">
         {chunkedProducts.map((bannerGroup, index) => (
           <div
             key={index}
@@ -110,7 +163,7 @@ export const CarouselSlider = ({ products }: ImageSliderProps) => {
             )}
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };
