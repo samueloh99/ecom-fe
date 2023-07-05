@@ -10,7 +10,7 @@ import UpLogo from "@/public/uplogo.webp";
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col border-t border-[#ccc] container min-h-[350px] justify-between h-full">
+    <footer className="flex flex-col border-t border-[#ccc] container min-h-[350px] justify-between h-full px-3 lg:px-3 xl:px-0">
       <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-between gap-10 md:gap-0 py-10">
         <div className="flex flex-col md:flex-row gap-10 md:gap-[100px] md:max-w-full max-w-[200px] w-full">
           <div className="flex flex-col gap-4 min-h-full items-center md:items-start">

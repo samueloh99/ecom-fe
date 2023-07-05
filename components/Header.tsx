@@ -17,7 +17,7 @@ import { HeaderDrawer } from "./HeaderDrawer";
 export const Header = () => {
   const [openHeader, setOpenHeader] = useState(false);
   return (
-    <div className="flex flex-col min-h-[100px] md:min-h-[150px] h-full px-3 border-b border-[#ccc]">
+    <div className="flex flex-col min-h-[100px] md:min-h-[150px] h-full px-3 lg:px-3 xl:px-0 border-b border-[#ccc]">
       <div className="flex flex-grow container max-h-full justify-between items-center relative">
         <div className="hidden md:flex gap-5">
           <NextLink

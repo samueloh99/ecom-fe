@@ -16,7 +16,7 @@ export default function ProductPage() {
   const pathName = usePathname();
   const path = pathName.split("/").slice(1);
   return (
-    <main className="flex px-3 md:px-0 container flex-col w-full min-h-screen gap-10 flex-col items-center mb-20">
+    <main className="flex px-3 lg:px-3 xl:px-0 container flex-col w-full min-h-screen gap-10 flex-col items-center mb-20">
       <Breadcrumbs paths={path} />
       <section className="flex flex-col lg:flex-row w-full gap-5">
         <div className="flex max-w-full justify-center items-center lg:max-w-[600px] w-full">
