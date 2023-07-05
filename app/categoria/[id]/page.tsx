@@ -1,6 +1,7 @@
 "use client";
 
 import NextImage from "next/image";
+import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 
 import { AiFillCaretDown } from "react-icons/ai";
@@ -14,7 +15,7 @@ export default function CategoryPage() {
   const pathName = usePathname();
   const path = pathName.split("/").slice(1);
   return (
-    <main className="flex container flex-col w-full min-h-screen gap-10 flex-col items-center">
+    <main className="flex container flex-col w-full min-h-screen gap-10 flex-col items-center mb-20">
       <Breadcrumbs paths={path} />
       <section className="flex flex-col lg:flex-row gap-5 w-full">
         <section className="flex flex-col w-full lg:w-2/5 gap-5">
@@ -316,28 +317,27 @@ export default function CategoryPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between gap-5">
             {products.map((item, index) => {
               return (
-                <div
-                  key={index}
-                  className="flex flex-col border border-[#ccc]"
-                >
-                  <div className="flex h-full w-full">
-                    <NextImage alt="product-image" src={Product1} />
-                  </div>
-                  <div className="flex flex-col items-center py-10 gap-5 justify-center w-full">
-                    <p className="uppercase text-[17px]">
-                      {item.name}
-                    </p>
-                    <p className="uppercase text-[17px]">
-                      R${item.price}
-                    </p>
-                    <div className="flex flex-row gap-2">
-                      <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-black" />
-                      <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-red-500" />
-                      <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-pink-500" />
-                      <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-purple-500" />
+                <NextLink href={item.slug} key={index}>
+                  <div className="flex flex-col border border-[#ccc]">
+                    <div className="flex h-full w-full">
+                      <NextImage alt="product-image" src={Product1} />
+                    </div>
+                    <div className="flex flex-col items-center py-10 gap-5 justify-center w-full">
+                      <p className="uppercase text-[17px]">
+                        {item.name}
+                      </p>
+                      <p className="uppercase text-[17px]">
+                        R${item.price}
+                      </p>
+                      <div className="flex flex-row gap-2">
+                        <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-black" />
+                        <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-red-500" />
+                        <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-pink-500" />
+                        <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] border border-black rounded-full bg-purple-500" />
+                      </div>
                     </div>
                   </div>
-                </div>
+                </NextLink>
               );
             })}
           </div>

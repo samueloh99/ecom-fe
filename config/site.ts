@@ -33,43 +33,43 @@ export const siteConfig = {
     {
       id: 0,
       name: "Vestidos",
-      slug: "/vestidos",
+      slug: "/categoria/vestidos",
     },
     {
       id: 1,
       name: "Calças",
-      slug: "/calcas",
+      slug: "/categoria/calcas",
     },
     {
       id: 2,
       name: "Shorts",
-      slug: "/shorts",
+      slug: "/categoria/shorts",
     },
 
     {
       id: 3,
       name: "Macacão",
-      slug: "/macacao",
+      slug: "/categoria/macacao",
     },
     {
       id: 4,
       name: "Saias",
-      slug: "/saias",
+      slug: "/categoria/saias",
     },
     {
       id: 5,
       name: "Cropped",
-      slug: "/cropped",
+      slug: "/categoria/cropped",
     },
     {
       id: 6,
       name: "Body",
-      slug: "/body",
+      slug: "/categoria/body",
     },
     {
       id: 7,
       name: "Kimono",
-      slug: "/kimono",
+      slug: "/categoria/kimono",
     },
   ],
 };
