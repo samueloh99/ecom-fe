@@ -75,7 +75,7 @@ const carouselProducts = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col w-full min-h-screen flex-col items-center justify-between">
+    <main className="flex flex-col w-full min-h-screen flex-col items-center justify-between px-3 lg:px-3 xl:px-0">
       <ImageSlider banners={banners} />
       <CarouselSlider products={carouselProducts} />
       <section className="flex container">

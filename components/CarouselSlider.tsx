@@ -20,42 +20,57 @@ interface ImageSliderProps {
 
 export const CarouselSlider = ({ products }: ImageSliderProps) => {
   return (
-    <section className="flex flex-col relative container my-[100px]">
+    <section className="flex flex-col relative container my-[100px] h-full">
       <Swiper
-        slidesPerView={4}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
+        breakpoints={{
+          425: {
+            slidesPerView: 2,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1440: {
+            slidesPerView: 4,
+          },
+        }}
         loop={true}
         navigation={true}
         modules={[Navigation, Pagination]}
-        className="max-w-full min-h-[800px] md:min-h-[500px] lg:min-h-[600px] xl:min-h-[700px] 2xl:min-h-[800px] h-full border border-black py-[200px]"
+        className="max-w-full h-full"
       >
         {products.map((item, index) => {
           return (
             <SwiperSlide
               key={index}
               onClick={() => console.log("AQUI", index)}
-              className="w-1/4 max-h-[700px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px] 2xl:max-h-[700px] h-full border border-[#ccc] flex flex-col cursor-pointer items-center justify-center text-center"
+              className="w-1/4 max-h-4/5 h-full flex flex-col pb-10 items-center justify-center text-center"
             >
-              <NextImage
-                draggable={false}
-                src={item.img}
-                alt={item.alt}
-                layout="responsive"
-                objectFit="cover"
-                width={500}
-                height={500}
-              />
-              <div className="flex flex-col gap-3 py-5 items-center justify-center">
-                <h4>Product 1</h4>
-                <h4>R$400.00</h4>
-                <div className="flex flex-row gap-2">
-                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-black" />
-                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-red-500" />
-                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-pink-500" />
-                  <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-purple-500" />
+              <div className="flex flex-col border border-[#ccc] cursor-pointer overflow-hidden">
+                <NextImage
+                  draggable={false}
+                  src={item.img}
+                  alt={item.alt}
+                  layout="responsive"
+                  objectFit="cover"
+                  width={500}
+                  height={500}
+                />
+                <div className="flex flex-col gap-3 py-5 items-center justify-center">
+                  <h4>Product 1</h4>
+                  <h4>R$400.00</h4>
+                  <div className="flex flex-row gap-2">
+                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-black" />
+                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-red-500" />
+                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-pink-500" />
+                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-purple-500" />
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
