@@ -57,9 +57,13 @@ export const Header = () => {
         </div>
         <div className="hidden md:flex h-full gap-2 justify-end items-center">
           <BiSolidUser size={20} color="black" />
-          <h6>Entrar</h6>
+          <NextLink href={"/login"}>
+            <h6>Entrar</h6>
+          </NextLink>
           <div className="bg-black w-[1px] h-[20px]" />
-          <h6>Criar Conta</h6>
+          <NextLink href={"/cadastro"}>
+            <h6>Criar Conta</h6>
+          </NextLink>
         </div>
         <div
           className="flex md:hidden h-full justify-center items-center cursor-pointer"

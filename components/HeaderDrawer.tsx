@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import NextImage from "next/image";
 import NextLink from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 import { siteConfig } from "@/config/site";
@@ -16,12 +14,12 @@ export const HeaderDrawer = ({
   setOpenHeader,
 }: HeaderDrawerProps) => {
   return (
-    <div className="flex items-center md:hidden">
+    <div className="flex items-center md:hidden z-[20] relative">
       <div
-        className="z-5 fixed inset-0 flex justify-end bg-black opacity-50"
+        className="fixed inset-0 flex justify-end bg-black opacity-50 z-[20]"
         onClick={() => setOpenHeader(false)}
       ></div>
-      <div className="fixed inset-y-0 right-0 z-10 flex w-[257px] flex-col bg-black text-white">
+      <div className="fixed inset-y-0 right-0 z-[30] flex w-[257px] flex-col bg-black text-white overflow-y-scroll">
         <div className="flex justify-end p-[37px]">
           <AiOutlineClose
             onClick={() => setOpenHeader(false)}
@@ -35,7 +33,7 @@ export const HeaderDrawer = ({
             onClick={() => setOpenHeader(false)}
             className="p-[16px] border-y border-white"
           >
-            HOME
+            Home
           </NextLink>
           {siteConfig.categories.map((item, index) => {
             return (
@@ -56,14 +54,14 @@ export const HeaderDrawer = ({
             onClick={() => setOpenHeader(false)}
             className="p-[16px] border-y border-white"
           >
-            LOGIN
+            Login
           </NextLink>
           <NextLink
             href={"/"}
             onClick={() => setOpenHeader(false)}
             className="p-[16px] border-b border-white"
           >
-            CRIAR CONTA
+            Criar Conta
           </NextLink>
         </div>
       </div>
