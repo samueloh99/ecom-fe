@@ -2,6 +2,8 @@ import { StaticImageData } from "next/image";
 import NextImage from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { BiSolidUser } from "react-icons/bi";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -64,13 +66,37 @@ export const CarouselSlider = ({ products }: ImageSliderProps) => {
                 />
                 <div className="flex flex-col gap-3 py-5 items-center justify-center">
                   <h4>Product 1</h4>
-                  <h4>R$400.00</h4>
+                  <div className="flex gap-4 pt-5 flex-col w-full">
+                    <p className="text-[15px] text-gray-500 underline">
+                      Para vizualizar o Preço, por favor
+                    </p>
+                    <div className="flex px-3 gap-5 flex-col gap-2 justify-between items-center">
+                      <button className="flex w-full gap-2 bg-[#89DC74] text-[17px] items-center justify-center py-3 font-normal text-white">
+                        CADASTRE-SE
+                        <BiSolidUser color="white" size={25} />
+                      </button>
+                      <div className="flex gap-1 w-full justify-center items-center gap-2">
+                        <p className="font-light text-[15px] text-gray-500">
+                          ou
+                        </p>
+                        <div className="flex items-center gap-1">
+                          <p className="font-light text-[17px] text-gray-500">
+                            FAÇA O{" "}
+                          </p>
+                          <p className="font-light text-[17px] text-gray-500 underline">
+                            LOGIN
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <h4>R$400.00</h4>
                   <div className="flex flex-row gap-2">
                     <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-black" />
                     <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-red-500" />
                     <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-pink-500" />
                     <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-purple-500" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </SwiperSlide>
