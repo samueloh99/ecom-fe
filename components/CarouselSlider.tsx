@@ -1,23 +1,18 @@
-import { StaticImageData } from "next/image";
 import NextImage from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
 
 import { BiSolidUser } from "react-icons/bi";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-// import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { ProdutoType } from "@/types/produto";
 
 interface ImageSliderProps {
-  products: {
-    img: StaticImageData;
-    alt: string;
-  }[];
+  products: ProdutoType[];
 }
 
 export const CarouselSlider = ({ products }: ImageSliderProps) => {
@@ -35,8 +30,8 @@ export const CarouselSlider = ({ products }: ImageSliderProps) => {
           640: {
             slidesPerView: 2,
           },
-          768: {
-            slidesPerView: 3,
+          1024: {
+            slidesPerView: 4,
           },
           1440: {
             slidesPerView: 4,
@@ -45,58 +40,104 @@ export const CarouselSlider = ({ products }: ImageSliderProps) => {
         loop={true}
         navigation={true}
         modules={[Navigation, Pagination]}
-        className="max-w-full h-full"
+        className="max-w-full w-full h-full"
       >
         {products.map((item, index) => {
+          const { skus } = item;
+          let colors = [
+            ...new Set(skus.map((item) => item.cor.hexadecimal)),
+          ];
+
+          let sizes = [...new Set(skus.map((item) => item.tamanho))];
+
+          const lowestPrice = skus.reduce((lowest, sku) => {
+            return sku.precoVenda < lowest ? sku.precoVenda : lowest;
+          }, skus[0].precoVenda);
+
           return (
             <SwiperSlide
               key={index}
               onClick={() => console.log("AQUI", index)}
-              className="w-1/4 max-h-4/5 h-full flex flex-col pb-10 items-center justify-center text-center"
+              className="w-full max-h-4/5 h-full flex flex-col pb-10 items-center justify-center text-center"
             >
-              <div className="flex flex-col border border-[#ccc] cursor-pointer overflow-hidden">
-                <NextImage
-                  draggable={false}
-                  src={item.img}
-                  alt={item.alt}
-                  layout="responsive"
-                  objectFit="cover"
-                  width={500}
-                  height={500}
-                />
-                <div className="flex flex-col gap-3 py-5 items-center justify-center">
-                  <h4>Product 1</h4>
-                  <div className="flex gap-4 pt-5 flex-col w-full">
-                    <p className="text-[15px] text-gray-500 underline">
+              <div className="flex flex-col cursor-pointer overflow-hidden">
+                <div className="flex h-full w-full">
+                  <NextImage
+                    draggable={false}
+                    src={skus[0].foto1}
+                    alt={item.nome}
+                    style={{
+                      objectFit: "fill",
+                    }}
+                    width={635}
+                    height={952}
+                  />
+                </div>
+                <div className="flex flex-col items-center py-5 px-3 gap-2 justify-center w-full border-x border-b border-[#ccc]">
+                  <p className="capitalize text-[17px]">
+                    {item.nome}
+                  </p>
+                  {/* <div className="flex flex-row justify-start gap-2 items-end w-full">
+                          <p className="text-[14px] font-normal">
+                            A partir de
+                          </p>
+                          <p className="uppercase text-[18px] font-medium">
+                            R$
+                            {lowestPrice.toString().replace(".", ",")}
+                          </p>
+                        </div> */}
+                  <div className="flex flex-col justify-center items-center w-full gap-2">
+                    <div className="flex flex-row gap-2">
+                      {colors.map((color, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={`flex w-[18px] md:w-[21px] h-[18px] md:h-[21px] border border-black rounded-full`}
+                            style={{
+                              backgroundColor: color,
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                    <div className="flex flex-row gap-2">
+                      {sizes.map((size, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={`flex w-[18px] md:w-[21px] h-[18px] md:h-[21px] text-[15px] border border-black rounded-full justify-center items-center`}
+                          >
+                            {size}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  {/* <button className="flex w-full gap-2 bg-[#89DC74] text-[15px] font-bold items-center justify-center py-3 text-white mt-5">
+                          VER DETALHES
+                        </button> */}
+                  <div className="flex gap-4 pt-5 flex-col w-full justify-center items-center">
+                    <p className="text-[13px] text-gray-500 underline">
                       Para vizualizar o Preço, por favor
                     </p>
-                    <div className="flex px-3 gap-5 flex-col gap-2 justify-between items-center">
+                    <div className="flex flex-col gap-2 flex-row gap-2 justify-center items-center w-full">
                       <button className="flex w-full gap-2 bg-[#89DC74] text-[17px] items-center justify-center py-3 font-normal text-white">
                         CADASTRE-SE
-                        <BiSolidUser color="white" size={25} />
+                        <BiSolidUser color="white" size={15} />
                       </button>
-                      <div className="flex gap-1 w-full justify-center items-center gap-2">
-                        <p className="font-light text-[15px] text-gray-500">
-                          ou
+                      <p className="font-light text-[13px] text-gray-500">
+                        ou
+                      </p>
+                      <div className="flex gap-1 w-full justify-center items-center">
+                        <p className="font-light text-[17px] text-gray-500">
+                          FAÇA O{" "}
                         </p>
-                        <div className="flex items-center gap-1">
-                          <p className="font-light text-[17px] text-gray-500">
-                            FAÇA O{" "}
-                          </p>
-                          <p className="font-light text-[17px] text-gray-500 underline">
-                            LOGIN
-                          </p>
-                        </div>
+                        <p className="font-light text-[17px] text-gray-500 underline">
+                          LOGIN
+                        </p>
                       </div>
                     </div>
                   </div>
-                  {/* <h4>R$400.00</h4>
-                  <div className="flex flex-row gap-2">
-                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-black" />
-                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-red-500" />
-                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-pink-500" />
-                    <div className="flex w-[25px] md:w-[20px] h-[25px] md:h-[20px] border border-black rounded-full bg-purple-500" />
-                  </div> */}
                 </div>
               </div>
             </SwiperSlide>

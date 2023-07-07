@@ -1,6 +1,7 @@
 "use client";
 
 import NextImage from "next/image";
+import { useQuery } from "@tanstack/react-query";
 
 import Banner1 from "@/public/banner1.webp";
 import Banner2 from "@/public/banner2.webp";
@@ -16,6 +17,7 @@ import Product7 from "@/public/product7.webp";
 import Product8 from "@/public/product8.webp";
 import ClientesCompram from "@/public/clientescompram.webp";
 
+import { getProdutos } from "@/utils/getProdutos";
 import { ImageSlider } from "@/components/ImageSlider";
 import { CarouselSlider } from "@/components/CarouselSlider";
 
@@ -74,22 +76,33 @@ const carouselProducts = [
 ];
 
 export default function Home() {
+  const { data } = useQuery({
+    queryKey: ["produtos"],
+    queryFn: () => getProdutos(),
+  });
+
+  if (!data) {
+    return <div>loading</div>;
+  }
+
   return (
     <main className="flex flex-col w-full min-h-screen flex-col items-center justify-between px-3 lg:px-3 xl:px-0">
       <ImageSlider banners={banners} />
-      <CarouselSlider products={carouselProducts} />
+      <CarouselSlider products={data} />
       <section className="flex container">
         <NextImage
           draggable={false}
           src={ClientesCompram}
           alt={"clientes-compram"}
           layout="responsive"
-          objectFit="cover"
+          style={{
+            objectFit: "cover",
+          }}
           width={500}
           height={500}
         />
       </section>
-      <CarouselSlider products={carouselProducts} />
+      <CarouselSlider products={data} />
     </main>
   );
 }

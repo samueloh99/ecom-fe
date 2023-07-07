@@ -3,6 +3,7 @@ import "./globals.css";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import ReactQueryProvider from "@/lib/reactQueryProvider";
 
 export const metadata = {
   title: {
@@ -24,12 +25,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <head />
       <body className={"min-h-screen antialiased"}>
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <div className="flex">{children}</div>
-          <Footer />
-        </div>
-        <TailwindIndicator />
+        <ReactQueryProvider>
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <div className="flex">{children}</div>
+            <Footer />
+          </div>
+          <TailwindIndicator />
+        </ReactQueryProvider>
       </body>
     </html>
   );

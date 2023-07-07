@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "LBOficial",
+  name: "LB Oficial",
   description:
     "Saldo | As tendências de moda para mulher, homem e criança na ZARA online. Encontre toda a roupa online: casacos, calças, sapatos e acessórios.",
   mainNavHeader: [
