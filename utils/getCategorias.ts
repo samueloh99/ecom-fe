@@ -1,10 +1,8 @@
-import { headers } from "next/headers";
+import { CategoriaType } from "@/types/categoria";
 
-import { ProdutoType } from "@/types/produto";
-
-export async function getProdutos(): Promise<ProdutoType[] | []> {
+export async function getCategorias(): Promise<CategoriaType[] | []> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/produtos`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/categorias`,
     {
       cache: "no-cache",
     }

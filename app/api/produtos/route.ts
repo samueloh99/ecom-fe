@@ -26,6 +26,7 @@ export async function GET() {
         createdAt,
         updatedAt,
         publishedAt,
+        categorias: { data: categoriasData },
         skus: { data },
       },
     } = item;
@@ -41,8 +42,22 @@ export async function GET() {
       descontoDe,
       descontoAte,
       createdAt,
+      slug: `/produto/${nome
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")}`,
       updatedAt,
       publishedAt,
+      categorias: categoriasData.map((item: any) => {
+        const {
+          id,
+          attributes: { nome },
+        } = item;
+        return {
+          id,
+          nome,
+        };
+      }),
       skus: data.map((item: any) => {
         const {
           id,

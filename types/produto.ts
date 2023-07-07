@@ -9,7 +9,12 @@ export type ProdutoType = {
   ncm: string;
   nome: string;
   publishedAt: Date;
+  slug: string;
   referencia: string;
+  categorias: {
+    nome: string;
+    id: number;
+  }[];
   updatedAt: Date;
   skus: {
     ativo: boolean;

@@ -7,15 +7,9 @@ import { useQuery } from "@tanstack/react-query";
 import { AiFillCaretDown } from "react-icons/ai";
 import { BiSolidUser } from "react-icons/bi";
 
-import { ProdutoType } from "@/types/produto";
 import { getProdutos } from "@/utils/getProdutos";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-
-interface UseQueryDTO {
-  data: ProdutoType;
-  isLoading: boolean;
-}
 
 const CategoryPage = () => {
   const pathName = usePathname();
@@ -332,44 +326,55 @@ const CategoryPage = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between gap-5">
             {data &&
-              data.map((item: ProdutoType, index: number) => {
-                const { skus } = item;
-                let colors = [
-                  ...new Set(
-                    skus.map((item) => item.cor.hexadecimal)
-                  ),
-                ];
+              data
+                .filter((product) =>
+                  product.categorias.some(
+                    (categoria) =>
+                      categoria.nome
+                        .toLowerCase()
+                        .normalize("NFD")
+                        .replace(/[\u0300-\u036f]/g, "") ===
+                      path[path.length - 1]
+                  )
+                )
+                .map((item, index) => {
+                  const { skus } = item;
+                  let colors = [
+                    ...new Set(
+                      skus.map((item) => item.cor.hexadecimal)
+                    ),
+                  ];
 
-                let sizes = [
-                  ...new Set(skus.map((item) => item.tamanho)),
-                ];
+                  let sizes = [
+                    ...new Set(skus.map((item) => item.tamanho)),
+                  ];
 
-                const lowestPrice = skus.reduce((lowest, sku) => {
-                  return sku.precoVenda < lowest
-                    ? sku.precoVenda
-                    : lowest;
-                }, skus[0].precoVenda);
+                  const lowestPrice = skus.reduce((lowest, sku) => {
+                    return sku.precoVenda < lowest
+                      ? sku.precoVenda
+                      : lowest;
+                  }, skus[0].precoVenda);
 
-                return (
-                  <NextLink href={item.nome} key={index}>
-                    <div className="flex flex-col">
-                      <div className="flex h-full w-full">
-                        <NextImage
-                          draggable={false}
-                          src={skus[0].foto1}
-                          alt={item.nome}
-                          style={{
-                            objectFit: "fill",
-                          }}
-                          width={635}
-                          height={952}
-                        />
-                      </div>
-                      <div className="flex flex-col items-center py-5 px-3 gap-2 justify-center w-full border-x border-b border-[#ccc]">
-                        <p className="capitalize text-[17px]">
-                          {item.nome}
-                        </p>
-                        {/* <div className="flex flex-row justify-start gap-2 items-end w-full">
+                  return (
+                    <NextLink href={item.slug} key={index}>
+                      <div className="flex flex-col">
+                        <div className="flex h-full w-full">
+                          <NextImage
+                            draggable={false}
+                            src={skus[0].foto1}
+                            alt={item.nome}
+                            style={{
+                              objectFit: "fill",
+                            }}
+                            width={635}
+                            height={952}
+                          />
+                        </div>
+                        <div className="flex flex-col items-center py-5 px-3 gap-2 justify-center w-full border-x border-b border-[#ccc]">
+                          <p className="capitalize text-[17px]">
+                            {item.nome}
+                          </p>
+                          {/* <div className="flex flex-row justify-start gap-2 items-end w-full">
                           <p className="text-[14px] font-normal">
                             A partir de
                           </p>
@@ -378,63 +383,66 @@ const CategoryPage = () => {
                             {lowestPrice.toString().replace(".", ",")}
                           </p>
                         </div> */}
-                        <div className="flex flex-col justify-center items-center w-full gap-2">
-                          <div className="flex flex-row gap-2">
-                            {colors.map((color, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  className={`flex w-[18px] md:w-[21px] h-[18px] md:h-[21px] border border-black rounded-full`}
-                                  style={{
-                                    backgroundColor: color,
-                                  }}
-                                />
-                              );
-                            })}
+                          <div className="flex flex-col justify-center items-center w-full gap-2">
+                            <div className="flex flex-row gap-2">
+                              {colors.map((color, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    className={`flex w-[18px] md:w-[21px] h-[18px] md:h-[21px] border border-black rounded-full`}
+                                    style={{
+                                      backgroundColor: color,
+                                    }}
+                                  />
+                                );
+                              })}
+                            </div>
+                            <div className="flex flex-row gap-2">
+                              {sizes.map((size, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    className={`flex w-[18px] md:w-[21px] h-[18px] md:h-[21px] text-[15px] border border-black rounded-full justify-center items-center`}
+                                  >
+                                    {size}
+                                  </div>
+                                );
+                              })}
+                            </div>
                           </div>
-                          <div className="flex flex-row gap-2">
-                            {sizes.map((size, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  className={`flex w-[18px] md:w-[21px] h-[18px] md:h-[21px] text-[15px] border border-black rounded-full justify-center items-center`}
-                                >
-                                  {size}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                        {/* <button className="flex w-full gap-2 bg-[#89DC74] text-[15px] font-bold items-center justify-center py-3 text-white mt-5">
+                          {/* <button className="flex w-full gap-2 bg-[#89DC74] text-[15px] font-bold items-center justify-center py-3 text-white mt-5">
                           VER DETALHES
                         </button> */}
-                        <div className="flex gap-4 pt-5 flex-col w-full justify-center items-center">
-                          <p className="text-[13px] text-gray-500 underline">
-                            Para vizualizar o Preço, por favor
-                          </p>
-                          <div className="flex flex-col gap-2 flex-row gap-2 justify-center items-center w-full">
-                            <button className="flex w-full gap-2 bg-[#89DC74] text-[15px] items-center justify-center py-3 font-normal text-white">
-                              CADASTRE-SE
-                              <BiSolidUser color="white" size={15} />
-                            </button>
-                            <p className="font-light text-[13px] text-gray-500">
-                              ou
+                          <div className="flex gap-4 pt-5 flex-col w-full justify-center items-center">
+                            <p className="text-[13px] text-gray-500 underline">
+                              Para vizualizar o Preço, por favor
                             </p>
-                            <div className="flex gap-1 w-full justify-center items-center">
-                              <p className="font-light text-[15px] text-gray-500">
-                                FAÇA O{" "}
+                            <div className="flex flex-col gap-2 flex-row gap-2 justify-center items-center w-full">
+                              <button className="flex w-full gap-2 bg-[#89DC74] text-[15px] items-center justify-center py-3 font-normal text-white">
+                                CADASTRE-SE
+                                <BiSolidUser
+                                  color="white"
+                                  size={15}
+                                />
+                              </button>
+                              <p className="font-light text-[13px] text-gray-500">
+                                ou
                               </p>
-                              <p className="font-light text-[15px] text-gray-500 underline">
-                                LOGIN
-                              </p>
+                              <div className="flex gap-1 w-full justify-center items-center">
+                                <p className="font-light text-[15px] text-gray-500">
+                                  FAÇA O{" "}
+                                </p>
+                                <p className="font-light text-[15px] text-gray-500 underline">
+                                  LOGIN
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </NextLink>
-                );
-              })}
+                    </NextLink>
+                  );
+                })}
           </div>
         </section>
       </section>
