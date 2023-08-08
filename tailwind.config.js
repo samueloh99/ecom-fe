@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        "gray-z": "#959595",
+      },
       container: {
         center: "center",
       },

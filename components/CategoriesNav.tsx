@@ -12,13 +12,13 @@ export const CategoriesNav = () => {
 
   if (!data) {
     return (
-      <div className="hidden md:flex flex-wrap border-y border-[#ccc] container justify-center">
+      <div className="hidden md:flex flex-wrap border-t border-[#ccc] container justify-center">
         loading
       </div>
     );
   }
   return (
-    <div className="hidden md:flex flex-wrap border-y border-[#ccc]">
+    <div className="hidden md:flex flex-wrap border-t border-[#ccc]">
       <div className="flex container justify-between">
         {data.map((item, index) => {
           return (

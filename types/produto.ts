@@ -11,6 +11,7 @@ export type ProdutoType = {
   publishedAt: Date;
   slug: string;
   referencia: string;
+  peso: string;
   categorias: {
     nome: string;
     id: number;

@@ -72,9 +72,9 @@ export default function ProductPage() {
             </div>
           </div>
           <div className="flex items-start justify-center gap-2 flex-col border-b py-5 border-black">
-            <table className="w-full">
+            <table className="w-[600px]">
               <thead>
-                <tr className="">
+                <tr>
                   <th className="w-[50px]" />
                   <th className="w-[100px]">
                     <div className="flex w-full items-center justify-center">
@@ -99,119 +99,119 @@ export default function ProductPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="">
+                <tr>
                   <td className="h-[50px]">
                     <div className="flex w-full h-full items-center justify-center">
-                      <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] rounded-full bg-black" />
+                      <div className="flex w-[20px] xl:w-[25px] h-[20px] xl:h-[25px] rounded-full bg-black" />
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex bg-[#D9D9D9] items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex bg-[#D9D9D9] items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                 </tr>
-                <tr className="">
+                <tr>
                   <td className="h-[50px]">
                     <div className="flex w-full h-full items-center justify-center">
-                      <div className="flex w-[20px] md:w-[25px] h-[20px] md:h-[25px] rounded-full bg-red-500" />
+                      <div className="flex w-[20px] xl:w-[25px] h-[20px] xl:h-[25px] rounded-full bg-red-500" />
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
                   </td>
                   <td className="h-[50px]">
-                    <div className="flex h-full">
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                    <div className="flex h-full justify-center">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         -
                       </p>
-                      <p className="flex items-center justify-center w-2/4 border-y border-black">
+                      <p className="flex items-center justify-center w-2/5 border-y border-black">
                         10
                       </p>
-                      <p className="flex items-center justify-center w-1/4 border border-black">
+                      <p className="flex items-center justify-center w-2/5 border border-black">
                         +
                       </p>
                     </div>
@@ -226,15 +226,15 @@ export default function ProductPage() {
               >
                 esvaziar carrinho
               </p>
-              <div>
+              <div className="flex flex-col justify-center items-end">
                 <p className="font-light text-[15px] text-gray-500">
                   Quantidade de Peças: 18 und
                 </p>
                 <p className="text-[20px]">Total: R$ 1.859,60</p>
               </div>
             </div>
-            <button className="flex w-full gap-2 bg-[#89DC74] text-[20px] items-center justify-center py-3 font-normal text-white">
-              FINALIZAR PEDIDO
+            <button className="flex w-full gap-2 bg-[#89DC74] text-[20px] items-center justify-center py-3 font-medium text-white">
+              ADICIONAR AO CARRINHO
               <BsFillCartFill color="white" size={25} />
             </button>
             {/* <div className="flex gap-4 pt-5 flex-col w-full">

@@ -6,6 +6,7 @@ import NextImage from "next/image";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { BiSolidUser } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { BsBag } from "react-icons/bs";
 
 import Logo from "@/public/logo.svg";
 
@@ -55,7 +56,7 @@ export const Header = () => {
             />
           </NextLink>
         </div>
-        <div className="hidden md:flex h-full gap-2 justify-end items-center">
+        <div className="hidden md:flex h-full gap-2 justify-center items-end">
           <BiSolidUser size={20} color="black" />
           <NextLink href={"/login"}>
             <h6>Entrar</h6>
@@ -63,6 +64,12 @@ export const Header = () => {
           <div className="bg-black w-[1px] h-[20px]" />
           <NextLink href={"/cadastro"}>
             <h6>Criar Conta</h6>
+          </NextLink>
+          <NextLink href={"/carrinho"}>
+            <div className="flex items-center justify-center relative ml-5 cursor-pointer">
+              <BsBag size={30} color="black" />
+              <p className="absolute text-[14px] top-2">2</p>
+            </div>
           </NextLink>
         </div>
         <div
