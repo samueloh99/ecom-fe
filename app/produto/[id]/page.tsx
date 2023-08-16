@@ -237,28 +237,6 @@ export default function ProductPage() {
               ADICIONAR AO CARRINHO
               <BsFillCartFill color="white" size={25} />
             </button>
-            {/* <div className="flex gap-4 pt-5 flex-col w-full">
-              <p className="text-[15px] text-gray-500 underline">
-                Para vizualizar o Preço, por favor
-              </p>
-              <div className="flex gap-5 flex-row gap-2 justify-between items-center">
-                <button className="flex w-full gap-2 bg-[#89DC74] text-[17px] items-center justify-center py-3 font-normal text-white">
-                  CADASTRE-SE
-                  <BiSolidUser color="white" size={25} />
-                </button>
-                <p className="font-light text-[15px] text-gray-500">
-                  ou
-                </p>
-                <div className="flex gap-1 w-3/5 md:w-2/5 justify-start">
-                  <p className="font-light text-[17px] text-gray-500">
-                    FAÇA O{" "}
-                  </p>
-                  <p className="font-light text-[17px] text-gray-500 underline">
-                    LOGIN
-                  </p>
-                </div>
-              </div>
-            </div> */}
           </div>
           <div className="flex gap-5 flex-col w-full pt-5">
             <h4 className="text-[17px]">Fretes e Devoluções</h4>
