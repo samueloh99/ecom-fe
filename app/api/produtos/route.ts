@@ -45,7 +45,7 @@ export async function GET() {
       slug: `/produto/${nome
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")}`,
+        .replace(/[\u0300-\u036f]/g, "")}`.replaceAll(" ", "-"),
       updatedAt,
       publishedAt,
       categorias: categoriasData.map((item: any) => {
